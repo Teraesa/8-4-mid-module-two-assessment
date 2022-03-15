@@ -88,7 +88,7 @@ const findById = (movies, id) => {
     throw error;
   }
   let movieID = movies.find((movie) => {
-    return movie.imdbID === id;
+    return movie.imdbID === id; // || null ---> is another way to write the code on Ln92-96
   });
   if (!movieID) {
     return null;
@@ -192,7 +192,7 @@ const checkMinMetascores = (movies, metascore) => {
     }
   });
 };
-
+////return movies.every((movie) => movie.metascore >= metascore); TIM CORRECT CODE
 /**
  * getRottenTomatoesScoreByMovie()
  * -----------------------------
@@ -217,7 +217,18 @@ const checkMinMetascores = (movies, metascore) => {
       { "James and the Giant Peach": "91%" },
     ];
  */
-function getRottenTomatoesScoreByMovie() {}
+function getRottenTomatoesScoreByMovie(movies) {
+  if (movies.length === 0) {
+    throw "no movies";
+  }
+  //TIM'S CORRECT CODE
+  // return movies.map((movie) => {
+  //   const tomatoScore = movie.ratings.find(
+  //     (rating) => rating.source === "Rotten Tomatoes"
+  //   ).value;
+  //   return { [movie.title]: tomatoScore };
+  // });
+}
 
 // Do not change anything below this line.
 module.exports = {
